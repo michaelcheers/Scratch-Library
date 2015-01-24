@@ -45,4 +45,4 @@ namespace Scratch_NonXna
   
   To build this project you must install [xna](https://msxna.codeplex.com/downloads/get/777889).
   This project is for vs 2013 for how to port a project [click here](http://stackoverflow.com/questions/20486230/how-to-convert-visual-studios-2013-project-to-visual-studios-2010).
-  To give this product to other people either use [JSIL](http://www.jsil.org) or everybody who downloads this will have to install [xna redistabutable](http://www.microsoft.com/en-ca/download/details.aspx?id=20914) or build this with [monogame](http://www.monogame.net).
+  To give this product to other people either use [JSIL](http://www.jsil.org) or everybody who downloads this will have to install [xna redistabutable](http://www.microsoft.com/en-ca/download/details.aspx?id=20914) or another option is to build this with [monogame](http://www.monogame.net).
