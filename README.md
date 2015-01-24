@@ -49,3 +49,4 @@ namespace Scratch_NonXna
   ##How to build
   
   To build this project you must install [xna](https://msxna.codeplex.com/downloads/get/777889).
+  This project is for vs 2013 for how to port a project [click here](http://stackoverflow.com/questions/20486230/how-to-convert-visual-studios-2013-project-to-visual-studios-2010).
