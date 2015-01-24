@@ -28,7 +28,6 @@ namespace Scratch_NonXna
         {
             world = host.InitializeWorld("white", "cat");
             cat = world.CreateSprite("cat");
-            cat.BonusContent.SETTINGS = Scratch.BonusContent.SpriteBonusContent.Settings.Draggable;
             world.GreenFlag += world_GreenFlag;
         }
 
