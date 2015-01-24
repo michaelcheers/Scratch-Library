@@ -1,0 +1,6 @@
+﻿1>------ Build started: Project: Library, Configuration: Debug x86 ------
+1>  Library -> C:\Users\Michael\Documents\USB Recovery\Private\Visual Studio 2010 Daddy\Projects\Scratch\Library\bin\x86\Debug\Library.dll
+2>------ Build started: Project: Test, Configuration: Debug x86 ------
+2>  Building SayFont.spritefont -> C:\Users\Michael\Documents\USB Recovery\Private\Visual Studio 2010 Daddy\Projects\Scratch\Test\Test\bin\x86\Debug\Content\SayFont.xnb
+2>  Test -> C:\Users\Michael\Documents\USB Recovery\Private\Visual Studio 2010 Daddy\Projects\Scratch\Test\Test\bin\x86\Debug\Test.exe
+========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========
