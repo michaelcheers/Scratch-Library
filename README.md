@@ -12,10 +12,6 @@ You must install xna redistrabutable from this [link](http://www.microsoft.com/e
 
   ````c#
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Scratch;
 
 namespace Scratch_NonXna
