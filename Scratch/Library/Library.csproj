@@ -37,7 +37,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\x86\Debug</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\Scratch\</OutputPath>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -62,16 +62,10 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jint, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Documents\GitHub\jint\Jint\bin\Debug\Jint.dll</HintPath>
-    </Reference>
-    <Reference Include="Michaels_Xna_Functions">
-      <HintPath>..\..\Michaels_Xna_Functions\Michaels_Xna_Functions\bin\x86\Debug\Michaels_Xna_Functions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -133,9 +127,6 @@
   <ItemGroup>
     <EmbeddedResource Include="bubblearrow.png" />
     <EmbeddedResource Include="bubbleframe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="sb.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\SayFont.xnb">

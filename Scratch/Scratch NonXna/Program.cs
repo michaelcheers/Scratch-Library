@@ -15,13 +15,13 @@ namespace Scratch_NonXna
         {
             world = host.InitializeWorld("white", "cat");
             cat = world.CreateSprite("cat");
-            cat.BonusContent.SETTINGS = Scratch.BonusContent.SpriteBonusContent.Settings.Draggable;
+            //cat.BonusContent.SETTINGS = Scratch.BonusContent.SpriteBonusContent.Settings.Draggable;
             world.GreenFlag += world_GreenFlag;
         }
 
         static void world_GreenFlag()
         {
-            cat.GoTo(world.BonusContent.ScreenWidth / 2, world.BonusContent.ScreenHeight / 2);
+            cat.GoTo(0, 0);
             cat.Say("Hello World!", TimeSpan.FromSeconds(2.0));
         }
 

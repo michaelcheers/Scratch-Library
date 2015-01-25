@@ -124,7 +124,7 @@ namespace Scratch
             {*/
             foreach (Sprite sprite in sprites)
             {
-                sprite.Draw(this);
+                sprite.Draw();
             }
             //}
             green_flag.Draw();

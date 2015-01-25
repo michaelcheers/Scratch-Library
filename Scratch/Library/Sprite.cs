@@ -89,13 +89,15 @@ namespace Scratch
         {
             TimeSpan? timeleft;
             string text;
+            Sprite value;
             WaitHandler waitHandle;
-            public SayData(string text, TimeSpan timeleft)
+            public SayData(string text, TimeSpan timeleft, Sprite value)
                 : this()
             {
                 this.text = text;
                 this.timeleft = timeleft;
                 waitHandle = new WaitHandler();
+                this.value = value;
             }
 
             public void WaitTillSayFinished()
@@ -127,6 +129,7 @@ namespace Scratch
 
             public void DrawStretchedRect(SpriteBatch spriteBatch, Rectangle rect, Texture2D texture, Color color)
             {
+                rect = ConvertToRectangle(value.ConvertFromScratchPosToXnaPos(ConvertToVector2(rect)), rect);
                 int fragmentW = texture.Width / 4;
                 int fragmentH = texture.Height / 4;
                 int rightEdgeX = rect.X + rect.Width - fragmentW;
@@ -162,8 +165,8 @@ namespace Scratch
                 const int padding = 4;
                 Rectangle bubbleRect = new Rectangle((int)(spriteRect.Center.X - contentSize.X / 2) - padding, (int)(spriteRect.Top - contentSize.Y), (int)contentSize.X + padding * 2, (int)contentSize.Y);
                 DrawStretchedRect(world.batch, bubbleRect, world.bubbleframe, Color.White);
-                world.batch.Draw(world.bubblearrow, new Vector2(spriteRect.Center.X - world.bubblearrow.Width / 2, spriteRect.Top - world.bubblearrow.Height / 2), Color.White);
-                world.batch.DrawString(world.font, text, new Vector2(bubbleRect.Left + padding, bubbleRect.Top), Color.Black);
+                world.batch.Draw(world.bubblearrow, value.ConvertFromScratchPosToXnaPos(new Vector2(spriteRect.Center.X - world.bubblearrow.Width / 2, spriteRect.Top - world.bubblearrow.Height / 2)), Color.White);
+                world.batch.DrawString(world.font, text, value.ConvertFromScratchPosToXnaPos(new Vector2(bubbleRect.Left + padding, bubbleRect.Top)), Color.Black);
             }
         }
         internal Rectangle rect;
@@ -297,6 +300,11 @@ namespace Scratch
             this.world = world;
             SetDefaults();
         }
+        internal Vector2 ConvertFromScratchPosToXnaPos (Vector2 input)
+        {
+            Vector2 result = new Vector2(input.X, -input.Y);
+            return result + new Vector2(world.BonusContent.ScreenWidth / 2, world.BonusContent.ScreenHeight / 2);
+        }
         #endregion
         /// <summary>
         /// Points to the specified sprite.
@@ -402,17 +410,17 @@ namespace Scratch
         }
         public void Say(string text, double secondsInTime)
         {
-            saydata = new SayData(text, TimeSpan.FromSeconds(secondsInTime));
+            saydata = new SayData(text, TimeSpan.FromSeconds(secondsInTime), this);
             saydata.WaitTillSayFinished();
         }
         public void Say(string text, TimeSpan time)
         {
-            saydata = new SayData(text, time);
+            saydata = new SayData(text, time, this);
             saydata.WaitTillSayFinished();
         }
         public void Say(string text)
         {
-            saydata = new SayData(text, System.TimeSpan.MinValue);
+            saydata = new SayData(text, System.TimeSpan.MinValue, this);
             saydata.WaitTillSayFinished();
         }
         /// <summary>
@@ -620,12 +628,12 @@ namespace Scratch
         /// Draws the sprite.
         /// </summary>
         /// <param name="world">The world to draw the sprite from.</param>
-        internal void Draw(World world)
+        internal void Draw()
         {
             float xnaRotation = rotation - (float)(Math.PI / 2);
             Vector2 halfTextureSize = new Vector2(picture.Width / 2, picture.Height / 2);
             Vector2 rotatedHalfTextureSize = RotateAboutOrigin(halfTextureSize, Vector2.Zero, xnaRotation);
-            Rectangle finalRect = rect;
+            Rectangle finalRect = ConvertToRectangle(ConvertFromScratchPosToXnaPos(ConvertToVector2(rect)), rect);
             finalRect.X += (int)(halfTextureSize.X - rotatedHalfTextureSize.X);
             finalRect.Y += (int)(halfTextureSize.Y - rotatedHalfTextureSize.Y);
 
