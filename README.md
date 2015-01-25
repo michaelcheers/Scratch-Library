@@ -3,6 +3,7 @@ This is a library for implementing projects using Scratch graphics libraries. It
 
 I am 9 and this is my introduction to this library.
 I learn't Scratch when I was 5 because my dad said if you would like to make a video game make it yourself.
+The only thing my dad helped me with was with the angles and rotating around the middle instead of the top left corner.
 I decided to make this product so that people learning c# coming from scratch either don't get bored with Console Applications or not know how to use more complex graphics library like **DirectX** or **OpenGl** or **Xna**, etc.
 
 ## Precompiled Version
