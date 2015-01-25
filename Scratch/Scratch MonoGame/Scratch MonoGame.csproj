@@ -30,41 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lidgren.Network, Version=3.3.0.1802, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="ManagedPVRTC">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\ManagedPVRTC.dll</HintPath>
-    </Reference>
     <Reference Include="MonoGame.Framework, Version=3.3.0.1802, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework.Net, Version=3.3.0.1802, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\MonoGame.Framework.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGameContentProcessors">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\MonoGameContentProcessors.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\NAudio.dll</HintPath>
-    </Reference>
-    <Reference Include="NAudio.WindowsMediaFormat">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\NAudio.WindowsMediaFormat.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\OpenTK.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.D3DCompiler, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\SharpDX.D3DCompiler.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MonoGame\v3.0\Assemblies\WindowsGL\MonoGame.Framework.Net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,20 +45,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\Tao.Sdl.dll</HintPath>
-    </Reference>
-    <Reference Include="yeti.mmedia">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\yeti.mmedia.dll</HintPath>
-    </Reference>
-    <Reference Include="yeti.mp3">
-      <HintPath>..\..\..\..\..\..\Visual Studio 2013\Projects\Game Maker Begin\Game Maker Begin\bin\WindowsGL\Debug\yeti.mp3.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Library\Class1.cs">
-      <Link>Class1.cs</Link>
+    <Compile Include="..\Library\BrodcastEvent.cs">
+      <Link>BrodcastEvent.cs</Link>
     </Compile>
     <Compile Include="..\Library\DraggingSpriteBonusContent.cs">
       <Link>DraggingSpriteBonusContent.cs</Link>
@@ -115,6 +77,29 @@
     <None Include="SDL.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Library\bubblearrow.png">
+      <Link>bubblearrow.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Library\bubbleframe.png">
+      <Link>bubbleframe.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Library\cat.png">
+      <Link>cat.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Library\green-flag.png">
+      <Link>green-flag.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Library\monkey.png">
+      <Link>monkey.png</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Library\white.png">
+      <Link>white.png</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
