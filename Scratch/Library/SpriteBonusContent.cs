@@ -44,7 +44,7 @@ namespace Scratch
                     MouseState state = Mouse.GetState();
                     if (state.LeftButton == ButtonState.Pressed)
                     {
-                        if (value.rect.Contains(state.X, state.Y))
+                        if (Sprite.ConvertToRectangle(value.ConvertFromScratchPosToXnaPos(Sprite.ConvertToVector2(value.rect)), value.rect).Contains(state.X, state.Y))
                         {
                             if (isDragging)
                             {

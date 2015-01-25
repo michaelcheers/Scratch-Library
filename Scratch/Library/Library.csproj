@@ -91,6 +91,7 @@
     <Compile Include="ScratchGame.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteBonusContent.cs" />
+    <Compile Include="StaticClass.cs" />
     <Compile Include="World.cs" />
     <Compile Include="WorldBonusContent.cs" />
   </ItemGroup>

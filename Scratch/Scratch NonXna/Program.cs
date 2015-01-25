@@ -13,9 +13,9 @@ namespace Scratch_NonXna
         static World world;
         static void Initialize (ScratchGameHost host)
         {
-            world = host.InitializeWorld("white", "cat");
+            world = host.InitializeWorld("white"/*, "cat"*/);
             cat = world.CreateSprite("cat");
-            //cat.BonusContent.SETTINGS = Scratch.BonusContent.SpriteBonusContent.Settings.Draggable;
+            cat.BonusContent.SETTINGS = Scratch.BonusContent.SpriteBonusContent.Settings.Draggable;
             world.GreenFlag += world_GreenFlag;
         }
 
