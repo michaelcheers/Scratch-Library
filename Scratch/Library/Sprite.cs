@@ -162,7 +162,7 @@ namespace Scratch
             public void Draw(World world, Rectangle spriteRect)
             {
                 Vector2 contentSize = world.font.MeasureString(text);
-                const int padding = 4;
+                const int padding = 5;
                 Rectangle bubbleRect = new Rectangle((int)(spriteRect.Center.X - contentSize.X / 2) - padding, (int)(spriteRect.Top - contentSize.Y), (int)contentSize.X + padding * 2, (int)contentSize.Y);
                 DrawStretchedRect(world.batch, bubbleRect, world.bubbleframe, Color.White);
                 world.batch.Draw(world.bubblearrow, value.ConvertFromScratchPosToXnaPos(new Vector2(spriteRect.Center.X - world.bubblearrow.Width / 2, spriteRect.Top - world.bubblearrow.Height / 2)), Color.White);
@@ -302,8 +302,10 @@ namespace Scratch
         }
         internal Vector2 ConvertFromScratchPosToXnaPos (Vector2 input)
         {
-            Vector2 result = new Vector2(input.X, -input.Y);
-            return result + new Vector2(world.BonusContent.ScreenWidth / 2, world.BonusContent.ScreenHeight / 2);
+            Vector2 before = input;
+            input.Normalize();
+            Vector2 result = input;
+            input = before;
         }
         #endregion
         /// <summary>

@@ -68,6 +68,8 @@ namespace Scratch
             this.callback = initialize;
             this.host = host;
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 480;
+            graphics.PreferredBackBufferHeight = 360;
             Content.RootDirectory = "Content";
         }
         ScratchGameAction callback;
