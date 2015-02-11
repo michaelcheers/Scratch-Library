@@ -45,6 +45,20 @@ namespace Scratch
         {
             Environment.Exit(Environment.ExitCode);
         }
+        internal Vector2 ConvertFromXnaPosToScratchPos (Vector2 input)
+        {
+            input /= new Vector2(BonusContent.ScreenWidth, BonusContent.ScreenHeight);
+            input *= 2;
+            input.X -= 1;
+            input.Y -= 1;
+            return input;
+        }
+        internal Vector2 ConvertFromScratchPosToXnaPos(Vector2 input)
+        {
+            input.X += BonusContent.ScreenWidth / 2;
+            input.Y += BonusContent.ScreenHeight / 2;
+            return input;
+        }
         /// <summary>
         /// Waits the specified amount of time.
         /// </summary>

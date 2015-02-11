@@ -32,10 +32,15 @@ namespace Scratch
                 this.x = x;
                 this.y = y;
             }
-            public Vector2Object(Vector2 vec)
+            public Vector2Object(Vector2 value)
             {
-                x = (int)vec.X;
-                y = (int)vec.Y;
+                x = (int)value.X;
+                y = (int)value.Y;
+            }
+            public Vector2Object(Point value)
+            {
+                x = value.X;
+                y = value.Y;
             }
             public Rectangle ConvertToRectangle(Texture2D picture)
             {
@@ -191,6 +196,7 @@ namespace Scratch
         {
             IsPenDown = false;
         }
+        internal Converter<Vector2, Vector2> ConvertFromScratchPosToXnaPos;
         public BonusContent.SpriteBonusContent BonusContent;
         List<Texture2D> pictures = new List<Texture2D>(10);
         Texture2D picture { get { return pictures[costume]; } }
@@ -201,111 +207,30 @@ namespace Scratch
         GlideData glidedata;
         SayData saydata;
         #region Constructor
-        public Sprite(string load_name, World world)
+        public Sprite(string load_name, World world) : this(world.FromLoadName(load_name), world) { }
+        public Sprite(Texture2D picture, World world) : this(new Vector2(), picture, world) { }
+        public Sprite(Vector2 pos, Texture2D picture, World world) : this(pos, new Texture2D[]{picture}, world) { }
+        public Sprite(Vector2 pos, List<string> load_names, World world) : this(pos, load_names.ConvertAll(world.FromLoadName), world) { }
+        public Sprite(Vector2Object pos, List<string> load_names, World world) : this(pos, load_names.ConvertAll(world.FromLoadName), world) { }
+        public Sprite(Vector2 pos, IEnumerable<Texture2D> pictures, World world) : this(new Vector2Object(pos), pictures, world) { }
+        public Sprite(Vector2 pos, string load_name, World world) : this(pos, world.FromLoadName(load_name), world) { }
+        public Sprite(Vector2Object pos, Texture2D picture, World world) : this(pos, new Texture2D[] { picture }, world) { }
+        public Sprite(Vector2Object pos, string load_name, World world) : this(pos, world.FromLoadName(load_name), world) { }
+        public Sprite(Vector2Object pos, IEnumerable<Texture2D> pictures, World world) : this(pos, pictures, world, world.ConvertFromScratchPosToXnaPos) { }
+        public Sprite(Vector2Object pos, IEnumerable<Texture2D> pictures, World world, Converter<Vector2, Vector2> posConverter)
         {
-            this.game = world.game;
-            this.world = world;
-            pictures.Add(world.FromLoadName(load_name));
-            rect = new Vector2Object().ConvertToRectangle(picture);
-            SetDefaults();
-        }
-        public Sprite(Texture2D picture, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            picture = this.picture;
-            rect = new Vector2Object().ConvertToRectangle(picture);
-            SetDefaults();
-        }
-        void SetDefaults()
-        {
-            BonusContent = new Scratch.BonusContent.SpriteBonusContent(this);
-            glidedata = new GlideData(0, new Vector2());
-            color = Color.White;
-            rotation = (float)(Math.PI / 2.0);
-            world.sprites.Add(this);
-        }
-        public Sprite(Vector2 pos, Texture2D picture, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            this.pictures[0] = picture;
-            this.rect = new Vector2Object(pos).ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2 pos, List<string> load_names, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            foreach (String s in load_names)
-                this.pictures.Add(Texture2D.FromStream(game.GraphicsDevice, System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("Library." + s + ".png")));
-            this.rect = new Vector2Object(pos).ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2Object pos, List<Texture2D> pictures, World world)
-        {
+            ConvertFromScratchPosToXnaPos = posConverter;
             this.game = world.game;
             this.world = world;
             foreach (Texture2D t in pictures)
                 this.pictures.Add(t);
             this.rect = pos.ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2Object pos, List<string> load_names, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            foreach (String s in load_names)
-                this.pictures.Add(Texture2D.FromStream(game.GraphicsDevice, System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(s)));
-            this.rect = pos.ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2 pos, List<Texture2D> pictures, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            this.pictures = pictures;
-            this.rect = new Vector2Object(pos).ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2 pos, string load_name, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            this.pictures.Add(world.FromLoadName(load_name));
-            this.rect = new Vector2Object(pos).ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2Object pos, Texture2D picture, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            this.pictures[0] = picture;
-            this.rect = pos.ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        public Sprite(Vector2Object pos, string load_name, World world)
-        {
-            this.game = world.game;
-            this.world = world;
-            this.pictures[0] = Texture2D.FromStream(game.GraphicsDevice, System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(load_name));
-            this.rect = pos.ConvertToRectangle(picture);
-            this.world = world;
-            SetDefaults();
-        }
-        internal Vector2 ConvertFromScratchPosToXnaPos (Vector2 input)
-        {
-            Vector2 before = input;
-            input.Normalize();
-            Vector2 result = input;
-            input = before;
+            this.world = world; 
+            BonusContent = new Scratch.BonusContent.SpriteBonusContent(this);
+            glidedata = new GlideData(0, new Vector2());
+            color = Color.White;
+            rotation = (float)(Math.PI / 2.0);
+            world.sprites.Add(this);
         }
         #endregion
         /// <summary>
@@ -626,6 +551,7 @@ namespace Scratch
         {
             return Vector2.Transform(point - origin, Matrix.CreateRotationZ(rotation)) + origin;
         }
+
         /// <summary>
         /// Draws the sprite.
         /// </summary>
@@ -638,7 +564,7 @@ namespace Scratch
             Rectangle finalRect = ConvertToRectangle(ConvertFromScratchPosToXnaPos(ConvertToVector2(rect)), rect);
             finalRect.X += (int)(halfTextureSize.X - rotatedHalfTextureSize.X);
             finalRect.Y += (int)(halfTextureSize.Y - rotatedHalfTextureSize.Y);
-
+            finalRect = ConvertToRectangle(new Vector2Object(finalRect.Center), finalRect);
             world.batch.Draw(picture, finalRect, null, color, xnaRotation, new Vector2(), SpriteEffects.None, 0f);
 
             if (saydata.IsValid())

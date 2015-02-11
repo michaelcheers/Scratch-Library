@@ -7,11 +7,11 @@ using Scratch;
 
 namespace Scratch_NonXna
 {
-    static class Program
+    class GameTest : ScratchGameType
     {
-        static Sprite cat;
-        static World world;
-        static void Initialize (ScratchGameHost host)
+        Sprite cat;
+        World world;
+        public override void Initialize (ScratchGameHost host)
         {
             world = host.InitializeWorld("white"/*, "cat"*/);
             cat = world.CreateSprite("cat");
@@ -19,15 +19,10 @@ namespace Scratch_NonXna
             world.GreenFlag += world_GreenFlag;
         }
 
-        static void world_GreenFlag()
+        void world_GreenFlag()
         {
             cat.GoTo(100, 100);
             cat.Say("Hello World!", TimeSpan.FromSeconds(2.0));
-        }
-
-        static void Main(string[] args)
-        {
-            ScratchGameHost.Create(Initialize).Start();
         }
     }
 }

@@ -60,6 +60,8 @@ namespace Scratch
             multiworlds.Add(result);
             return result;
         }
+        internal const int width = 480;
+        internal const int height = 360;
         GraphicsDeviceManager graphics;
         List<World> worlds = new List<World>();
         List<BonusContent.MultiWorld> multiworlds = new List<BonusContent.MultiWorld>();
@@ -68,8 +70,8 @@ namespace Scratch
             this.callback = initialize;
             this.host = host;
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 480;
-            graphics.PreferredBackBufferHeight = 360;
+            graphics.PreferredBackBufferWidth = width;
+            graphics.PreferredBackBufferHeight = height;
             Content.RootDirectory = "Content";
         }
         ScratchGameAction callback;
