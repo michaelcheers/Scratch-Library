@@ -21,7 +21,6 @@ namespace Scratch_NonXna
 
         void world_GreenFlag()
         {
-            cat.GoTo(100, 100);
             cat.Say("Hello World!", TimeSpan.FromSeconds(2.0));
         }
     }

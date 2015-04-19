@@ -244,6 +244,22 @@ namespace Scratch
         /// <summary>
         /// Points to the specified location.
         /// </summary>
+        /// <param name="x">The x to point to.</param>
+        /// <param name="y">The y to point to.</param>
+        public void PointTowards(float x, float y)
+        {
+            Vector2 back = ((ConvertToVector2(rect) - new Vector2(x, y)));
+            back.X = -back.X;
+            back.Normalize();
+            if (back.X > 0)
+                rotation = (float)Math.Acos(back.Y);
+            else
+                rotation = (float)(Math.PI * 2 - Math.Acos(back.Y));
+            //            Vector2 reverse = new Vector2((float)Math.Asin(back.X), (float)-Math.Acos(back.Y));
+        }
+        /// <summary>
+        /// Points to the specified location.
+        /// </summary>
         /// <param name="point">The location to point to.</param>
         public void PointTowards(Vector2 point)
         {
